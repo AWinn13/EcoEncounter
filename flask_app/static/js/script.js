@@ -125,7 +125,6 @@ class Lightbox {
 const lightbox = new Lightbox()
 
 
-// --------------------------Animal Game------------------------
 
 
 

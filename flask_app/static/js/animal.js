@@ -8,7 +8,7 @@ const _totalQuestion = document.getElementById('total-question');
 
 let correctAnswer = "", correctScore = askedCount = 0, totalQuestion = 10;
 
-// load question from API
+// ------------------load question from API-------------------------
 async function loadQuestion() {
     const APIUrl = 'https://opentdb.com/api.php?amount=1&category=27&difficulty=easy&type=multiple';
     const result = await fetch(`${APIUrl}`)
@@ -17,7 +17,7 @@ async function loadQuestion() {
     showQuestion(data.results[0]);
 }
 
-// event listeners
+// ----------------------event listeners-------------------------
 function eventListeners() {
     _checkBtn.addEventListener('click', checkAnswer);
     _playAgainBtn.addEventListener('click', restarttrivia);
@@ -51,7 +51,7 @@ function showQuestion(data) {
 }
 
 
-// options selection
+// ---------------------options selection-----  
 function selectOption() {
     _options.querySelectorAll('li').forEach(function (option) {
         option.addEventListener('click', function () {
