@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Land Ecosystems</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+    <div class="container-fluid text-center">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbarfixed-top sticky-top border-bottom border-dark shadow justify-content-evenly"
+                id="top">
+                <a id="top" class="navbar-brand" href="/welcome">
+                    <h2 id="top">Eco-Encounters</h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" id="top">
+                    <span style="background-color: rgb(236, 215, 117);" class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel" style="background-color: rgb(236, 215, 117);">
+                    <div class="offcanvas-header" style="background-color: rgb(236, 215, 117);">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"
+                            style="background-color: rgb(236, 215, 117);">
+                            Where to Next?</h5>
+                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
+                            aria-label="Close" class="top" style="background-color: rgb(236, 215, 117);"></button>
+                    </div>
+                    <div class="offcanvas-body" style="background-color: rgb(236, 215, 117);">
+                        <ul class="navbar-nav justify-content-around flex-grow-1 pe-3"
+                            style="background-color: rgb(236, 215, 117);">
+                            {%if session['user_id']  %}
+                                <li class="nav-item" style="background-color: rgb(236, 215, 117);">
+                                    <a class="nav-link active " href="/passport/{{user.id}}"
+                                    style="background-color: rgb(236, 215, 117);">Ecosystem Passport!</a>
+                                </li>
+                            {% endif %}
+                            <li class="nav-item" style="background-color: rgb(236, 215, 117);">
+                                <a class="nav-link active" href="land"
+                                    style="background-color: rgb(236, 215, 117);">Land
+                                    Ecosystems</a>
+                            </li>
+                            <li class="nav-item" style="background-color: rgb(236, 215, 117);">
+                                <a class="nav-link active" href="/water"
+                                    style="background-color: rgb(236, 215, 117);">Water
+                                    Ecosystems</a>
+                            </li>
+                            <li class="nav-item" style="background-color: rgb(236, 215, 117);">
+                                <a class="nav-link active" href="/animal/game"
+                                    style="background-color: rgb(236, 215, 117);">Animal Trivia</a>
+                            </li>
+                            <li class="nav-item" style="background-color: rgb(236, 215, 117);">
+                                {%if session['user_id']  %}
+                                    <a class="nav-link active" href="/logout" style="background-color: rgb(236, 215, 117);">Logout</a>
+                                {%elif not session['user_id'] %}
+                                    <a class="nav-link active" href="/user" style="background-color: rgb(236, 215, 117);">Login/Register</a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="row">
+                <h4 class="landwelcome">There are many different kinds of water ecosystems: <br> Oceans, Rivers, Lakes, Ponds. <br> Each one has unique fish, insects, wildlife, and plants that depend on each other in different ways.</h4>
+            </div>
+            <div class="row">
+                <img src="{{url_for('static', filename='water_main.jpeg')}}" / class="landpic">
+            </div>
+            <div class="row">
+                <h2 class="mt-4">Click On An Ecosystem Below To Start Exploring!</h2>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="landecos">
+                        <button onclick="showDiv5()"  class="btn btn-lg shadow" id="oceanbutton">Oceans
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="landecos">
+                        <button onclick="showDiv6()" type="button" class=" btn btn-lg shadow"
+                            id="riverbutton">Rivers
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="landecos">
+                        <button onclick="showDiv7()" type="button" class=" btn btn-lg shadow" id="lakebutton">Lakes
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="landecos">
+                        <button onclick="showDiv8()" type="button" class=" btn btn-lg shadow" id="pondbutton">Ponds
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="ocean_text">
+                    <img src="{{url_for('static', filename='cartoon_ocean.png')}}" / class="water_diagram">
+                    <p class="watertext" class="shadow">Oceans are vast bodies of saltwater that cover most of the
+                        Earth's surface. They are home to a wide variety of plants and animals, including whales,
+                        sharks, and coral reefs.</p>
+                </div>
+                <div id="river_text">
+                    <img src="{{url_for('static', filename='cartoon_river.png')}}" / class="water_diagram">
+                    <p class="watertext" class="shadow">Rivers are bodies of freshwater that flow from high ground to
+                        low ground. They are important because they provide water for plants, animals, and people.
+                        Rivers are home to many different types of fish, such as salmon and trout.</p>
+                </div>
+                <div id="lake_text">
+                    <img src="{{url_for('static', filename='cartoon_lake.png')}}" / class="water_diagram">
+                    <p class="watertext" class="shadow">Lakes are bodies of freshwater that are surrounded by land. They
+                        can be big or small, and they are important habitats for many different types of plants and
+                        animals. Some common animals found in lakes include fish, turtles, and ducks.</p>
+                </div>
+                <div id="pond_text">
+                    <img src="{{url_for('static', filename='cartoon_pond.png')}}" / class="water_diagram">
+                    <p class="watertext" class="shadow">Ponds are smaller bodies of freshwater, smaller than lakes, that
+                        are also surrounded by land. They are usually shallow and are home to many different types of
+                        plants and animals, such as frogs and dragonflies.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+        <script src="{{url_for('static', filename='js/script.js')}}"></script>
+</body>
+
+</html>

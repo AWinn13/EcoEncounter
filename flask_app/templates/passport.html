@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{user.first_name}}'s Eco-Passport</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+
+<body>
+    
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbarfixed-top sticky-top border-bottom border-dark shadow justify-content-evenly"
+            id="top">
+            <a id="top" class="navbar-brand" href="/welcome">
+                <h2 id="top">Eco-Encounters</h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" id="top">
+                <span style="background-color: rgb(236, 215, 117);" class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel" style="background-color: rgb(236, 215, 117);">
+                <div class="offcanvas-header" style="background-color: rgb(236, 215, 117);">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="background-color: rgb(236, 215, 117);">
+                        Where to Next?</h5>
+                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
+                        aria-label="Close" class="top" style="background-color: rgb(236, 215, 117);"></button>
+                </div>
+                <div class="offcanvas-body" style="background-color: rgb(236, 215, 117);">
+                    <ul class="navbar-nav justify-content-around flex-grow-1 pe-3"
+                        style="background-color: rgb(236, 215, 117);">
+                        {%if session['user_id']  %}
+                                <li class="nav-item" style="background-color: rgb(236, 215, 117);">
+                                    <a class="nav-link active " href="/passport/upload"
+                                    style="background-color: rgb(236, 215, 117);">Ecosystem Passport Upload!</a>
+                                </li>
+                        {% endif %}
+                        <li class="nav-item" style="background-color: rgb(236, 215, 117);">
+                            <a class="nav-link active" href="/land" style="background-color: rgb(236, 215, 117);">Land
+                                Ecosystems</a>
+                        </li>
+                        <li class="nav-item" style="background-color: rgb(236, 215, 117);">
+                            <a class="nav-link active" href="/water" style="background-color: rgb(236, 215, 117);">Water
+                                Ecosystems</a>
+                        </li>
+                        <li class="nav-item" style="background-color: rgb(236, 215, 117);">
+                            <a class="nav-link active" href="/animal/game" style="background-color: rgb(236, 215, 117);">Animal Trivia</a>
+                        </li>
+                        <li class="nav-item" style="background-color: rgb(236, 215, 117);">
+                            {%if session['user_id']  %}
+                                    <a class="nav-link active" href="/logout" style="background-color: rgb(236, 215, 117);">Logout</a>
+                            {%elif not session['user_id'] %}
+                                    <a class="nav-link active" href="/user" style="background-color: rgb(236, 215, 117);">Login/Register</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid text-center">
+            <div class="passportHead">{{user.first_name}}'s Eco-Passport</div>
+            <div class="gallery">
+                
+                    <div class="row mt-2 justify-content-around">
+                        {% for picture in pictures %}
+                            <div class="col-3 " id="stamps">
+                                <div class="info-container">
+                                    <p  class="passinfo">Location: {{picture.location}}</p>
+                                    <p class="passinfo">Ecosystem: {{picture.caption}}</p>
+                                </div>
+                                <img class="passImg" src="{{ url_for('static', filename='img/' + picture.filename) }}" alt="" />
+                                <div class="editbutton">
+                                    <a href="/passport/{{picture.id}}/edit" class="btn btn-outline-dark " id="editbutton">Edit</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Land Ecosystems</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+    <div class="container-fluid text-center">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbarfixed-top sticky-top border-bottom border-dark shadow justify-content-evenly"
+                id="top">
+                <a id="top" class="navbar-brand" href="/welcome">
+                    <h2 id="top">Eco-Encounters</h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" id="top">
+                    <span style="background-color: rgb(236, 215, 117);" class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel" style="background-color: rgb(236, 215, 117);">
+                    <div class="offcanvas-header" style="background-color: rgb(236, 215, 117);">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"
+                            style="background-color: rgb(236, 215, 117);">
+                            Where to Next?</h5>
+                        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
+                            aria-label="Close" class="top" style="background-color: rgb(236, 215, 117);"></button>
+                    </div>
+                    <div class="offcanvas-body" style="background-color: rgb(236, 215, 117);">
+                        <ul class="navbar-nav justify-content-around flex-grow-1 pe-3"
+                            style="background-color: rgb(236, 215, 117);">
+                            {%if session['user_id']  %}
+                                <li class="nav-item" style="background-color: rgb(236, 215, 117);">
+                                    <a class="nav-link active " href="/passport/{{user.id}}"
+                                    style="background-color: rgb(236, 215, 117);">Ecosystem Passport!</a>
+                                </li>
+                            {% endif %}
+                            <li class="nav-item" style="background-color: rgb(236, 215, 117);">
+                                <a class="nav-link active" href="/land"
+                                    style="background-color: rgb(236, 215, 117);">Land
+                                    Ecosystems</a>
+                            </li>
+                            <li class="nav-item" style="background-color: rgb(236, 215, 117);">
+                                <a class="nav-link active" href="/water"
+                                    style="background-color: rgb(236, 215, 117);">Water
+                                    Ecosystems</a>
+                            </li>
+                            <li class="nav-item" style="background-color: rgb(236, 215, 117);">
+                                <a class="nav-link active" href="/animal/game"
+                                    style="background-color: rgb(236, 215, 117);">Animal Trivia</a>
+                            </li>
+                            <li class="nav-item" style="background-color: rgb(236, 215, 117);">
+                                {%if session['user_id']  %}
+                                    <a class="nav-link active" href="/logout" style="background-color: rgb(236, 215, 117);">Logout</a>
+                                {%elif not session['user_id'] %}
+                                    <a class="nav-link active" href="/user" style="background-color: rgb(236, 215, 117);">Login/Register</a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="row">
+                <h4 class="landwelcome">There are many different kinds of land ecosystems: <br> Forests, Grassland, Desert. Tundra, and Wetland. <br> Each one has its own unique plants and animals that depend on each other in different ways.</h4>
+            </div>
+            <div class="row">
+                <img src="{{url_for('static', filename='all_eco.jpeg')}}" / class="landpic">
+            </div>
+            <div class="row">
+                <h2 class="mt-4">Click On An Ecosystem Below To Start Exploring!</h2>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="landecos">
+                        <button onclick="showDiv()" type="button" class="btn btn-lg shadow" id="forestbutton">Forest
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="landecos">
+                        <button onclick="showDiv1()" type="button" class=" btn btn-lg shadow"
+                            id="grassbutton">Grassland
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="landecos">
+                        <button onclick="showDiv2()" type="button" class="btn btn-lg shadow"
+                            id="desertbutton">Desert
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="landecos">
+                        <button onclick="showDiv3()" type="button" class="btn btn-lg shadow"
+                            id="tundrabutton">Tundra
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="landecos">
+                        <button onclick="showDiv4()" type="button" class="btn btn-lg shadow"
+                            id="wetlandbutton">Wetland</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="forest_text">
+                    <img src="{{url_for('static', filename='forest_ecosystem.jpeg')}}" / class="land_diagram">
+                    <p class="ecotext" class="shadow">Forests are areas with lots of trees and plants. There are many
+                        different types of forests all around the world, but some of the most common include tropical
+                        rainforests, temperate forests, and boreal forests. Forests provide homes for many different
+                        types of animals, and they also help to clean the air we breathe.</p>
+                </div>
+                <div id="grassland_text">
+                    <img src="{{url_for('static', filename='cartoon_grassland.jpeg')}}" / class="land_diagram">
+                    <p class="ecotext" class="shadow">Grasslands are areas where there is lots of grass, but not many
+                        trees. There are two main types of grasslands: savannas and prairies. Savannas have tall grass
+                        and a few scattered trees, while prairies have shorter grass and no trees at all. Grasslands are
+                        home to many different types of animals, including large grazing animals like bison and zebras.
+                    </p>
+                </div>
+                <div id="desert_text">
+                    <img src="{{url_for('static', filename='cartoon_desert_camel.png')}}" / class="land_diagram">
+                    <p class="ecotext" class="shadow">Deserts are areas where there is very little rainfall and very few
+                        plants. There are many different types of deserts all around the world, but they all have one
+                        thing in common: they are very dry! Because there is so little water in the desert, it can be a
+                        tough place for animals to survive. However, some animals, like camels and desert tortoises,
+                        have adapted to life in the desert and are able to thrive there.</p>
+                </div>
+                <div id="tundra_text">
+                    <img src="{{url_for('static', filename='cartoon_tundra_ecosystem.png')}}" / class="land_diagram">
+                    <p class="ecotext" class="shadow">Tundra is a type of ecosystem that is found in very cold places,
+                        like the Arctic. In the tundra, the ground is frozen most of the year, and there are very few
+                        trees or plants. Despite the harsh conditions, many animals are able to live in the tundra,
+                        including polar bears, caribou, and arctic foxes.</p>
+                </div>
+                <div id="wetland_text">
+                    <img src="{{url_for('static', filename='cartoon_wetland_ecosystem.png')}}" / class="land_diagram">
+                    <p class="ecotext" class="shadow">Wetlands are areas that are covered in water for part of the year.
+                        They can be found near rivers, lakes, and oceans. Wetlands are important because they help to
+                        filter water and prevent flooding. They are also home to many different types of animals,
+                        including ducks, frogs, and alligators.</p>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+        <script src="{{url_for('static', filename='js/script.js')}}"></script>
+</body>
+
+</html>

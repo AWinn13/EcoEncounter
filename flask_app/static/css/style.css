@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Short+Stack&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Short Stack', cursive;
+    background-color: #79ba90;
+}
+
+
+
+
+/* ------------------WELCOME PAGE---------------- */
+/* ---------------------NAV BAR----------------- */
+nav {
+    position: static;
+
+}
+
+
+.dropdown-menu {
+    background-color: #79ba90;
+    border: 1px solid black;
+}
+
+h4 {
+    margin-top: 7rem;
+}
+
+h2 {
+    margin-left: .5rem;
+}
+
+#top {
+    background-color: rgb(236, 215, 117);
+}
+
+/* ----------------BODY---------------- */
+.welcome-note {
+    font-size: 1.2rem;
+    border: .01rem solid lightcyan;
+    background-color: rgb(104, 201, 213);
+    width: 75%;
+    margin: 0 auto;
+    border-radius: 15%;
+    margin-top: 2.5rem;
+    margin-bottom: 4rem;
+    padding: 1%;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1.75rem;
+    margin-top: 2rem;
+}
+
+h5 {
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    
+}
+
+
+
+.main_diagram{
+    border-radius: 25%;
+    width: 65%;
+    max-height: 65%;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0);
+}
+
+.mainpage {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 25%;
+    box-shadow: 1px 1px 1px gray;
+    margin-top: 25px;
+}
+
+figcaption {
+    font-size: 1.5rem;
+    margin-top: 10px;
+
+}
+
+.figure {
+    max-height: 300px;
+}
+
+h3 {
+    margin-top: 10rem;
+}
+
+
+/* ----------------Land Page------------------------ */
+.landwelcome {
+    font-size: 1.2rem;
+    border: .01rem solid lightcyan;
+    background-color: rgb(104, 201, 213);
+    width: 75%;
+    margin: 0 auto;
+    border-radius: 15%;
+    margin-top: 2.5rem;
+    margin-bottom: 4rem;
+    padding: 1%;
+}
+
+.landpic {
+    max-width: 500px;
+    max-height: 500px;
+    margin: 0 auto;
+    border-radius: 5%;
+    padding: 0;
+    box-shadow: .1rem .1rem .1rem gray;
+}
+
+.landecos {
+    margin-top: 2.5rem;
+}
+
+#grassbutton {
+    border: .1rem solid black;
+    background-color: wheat;
+    font-weight: bold;
+
+}
+
+#forestbutton {
+    border: .1rem solid black;
+    background-color: forestgreen;
+    font-weight: bold;
+}
+
+#desertbutton {
+    border: .1rem solid black;
+    background-color: sandybrown;
+    font-weight: bold;
+}
+
+#tundrabutton {
+    border: .1rem solid black;
+    background-color: rgb(194, 205, 251);
+    font-weight: bold;
+}
+
+#wetlandbutton {
+    border: .1rem solid black;
+    background-color: rgb(160, 221, 160);
+    font-weight: bold;
+}
+
+#forest_text, #desert_text, #tundra_text, #wetland_text, #grassland_text {
+    display: none;
+}
+.ecotext {
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 3rem;
+    color: white;
+    font-size: 1.5rem;
+    border: .1rem solid black;
+    background-color: rgb(152, 124, 124);
+}
+.land_diagram{
+    margin-top: 2rem;
+    max-height: 50%;
+    max-width: 50%;
+    border-radius: 25%;
+    box-shadow: 1px 1px 1px gray;
+    
+}
+
+/* -----------------------------Water Page-------------------------------------- */
+
+.watertext {
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 3rem;
+    color: white;
+    font-size: 1.5rem;
+    border: .1rem solid black;
+    background-color: rgb(104, 201, 213);
+}
+.water_diagram{
+    margin-top: 2rem;
+    max-height: 50%;
+    max-width: 50%;
+    border-radius: 25%;
+    box-shadow: 1px 1px 1px gray;
+    
+}
+
+#ocean_text, #lake_text, #river_text, #pond_text {
+    display: none;
+}
+#oceanbutton{
+    border: .1rem solid black;
+    font-weight: bold;
+    background-color: rgb(38, 201, 193);
+
+}
+
+#riverbutton{
+    border: .1rem solid black;
+    font-weight: bold;
+    background-color: rgb(100, 154, 175);
+}
+
+#lakebutton{
+    border: .1rem solid black;
+    font-weight: bold;
+    background-color: rgb(41, 152, 207);
+}
+
+#pondbutton{
+    border: .1rem solid black;
+    font-weight: bold;
+    background-color: rgb(137, 148, 179);
+}
+
+
+/* --------------------Passport------------------------- */
+
+.passImg {
+    border-radius: 100%;
+    max-width: 75%;
+    max-height: auto;
+    margin-top: ;
+
+}
+
+.info-container {
+    background-color:rgb(204, 218, 219) ;
+}
+.passinfo{
+    background: rgb(204, 218, 219);
+    align-items:center;
+
+}
+.passcontent{
+    background: rgb(204, 218, 219);
+}
+
+#stamps {
+    border: .1rem solid rgba(13, 14, 14, 0.35);
+    margin: 1rem;
+    max-width: 100%;
+    box-shadow: .05rem .05rem .05rem .01rem gray ;
+    background: rgb(204, 218, 219);
+    border-radius: 5%;
+    display:inline-block;
+    
+    /* align-items: center; */
+    
+}
+.editbutton {
+    background-color:rgb(204, 218, 219);
+    margin-top: 5%;
+
+}
+
+
+#lightbox {
+    position: fixed;
+    display: none;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(40, 69, 137, 0.6);
+}
+
+#lightbox.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox img {
+    height: 70%;
+}
+
+.passportHead {
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom:5rem;
+}
+
